@@ -26,16 +26,16 @@ const navigateTo = (path, addToHistory = true) => {
   let pageElement = null;
   switch (path) {
     case '/':
-      pageElement = document.createElement('h1');
+      pageElement = document.createElement('menu-page');
       pageElement.textContent = 'Menu';
       break;
     case '/order':
-      pageElement = document.createElement('h1');
+      pageElement = document.createElement('order-page');
       pageElement.textContent = 'Your Order';
       break;
     default:
       if (path.startsWith('/product/')) {
-        pageElement = document.createElement('h1');
+        pageElement = document.createElement('details-page');
         pageElement.textContent = 'Details';
 
         const paramId = path.substring(path.lastIndexOf('/') + 1);
