@@ -27,16 +27,13 @@ const navigateTo = (path, addToHistory = true) => {
   switch (path) {
     case '/':
       pageElement = document.createElement('menu-page');
-      pageElement.textContent = 'Menu';
       break;
     case '/order':
       pageElement = document.createElement('order-page');
-      pageElement.textContent = 'Your Order';
       break;
     default:
       if (path.startsWith('/product/')) {
         pageElement = document.createElement('details-page');
-        pageElement.textContent = 'Details';
 
         const paramId = path.substring(path.lastIndexOf('/') + 1);
         pageElement.dataset.id = paramId;
@@ -45,9 +42,9 @@ const navigateTo = (path, addToHistory = true) => {
 
   // clean and append pageElement to the current main
   if (pageElement) {
-    let mainCache = document.querySelector('main');
-    mainCache.innerHTML = '';
-    mainCache.appendChild(pageElement);
+    let main = document.querySelector('main');
+    main.innerHTML = '';
+    main.appendChild(pageElement);
 
     window.scrollX = 0;
     window.scrollY = 0;
