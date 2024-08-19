@@ -18,6 +18,7 @@ export class MenuPage extends BaseComponent {
     this.root.appendChild(content);
 
     window.addEventListener('menu-updated', () => this.render());
+    this.render();
   }
 
   render() {
@@ -44,7 +45,7 @@ export class MenuPage extends BaseComponent {
         });
       }
     } else {
-      this.root.querySelector('.menu').innerHTML = 'Loading...';
+      this.root.querySelector('#menu').innerHTML = 'Loading...';
     }
   }
 }
