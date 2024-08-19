@@ -1,6 +1,12 @@
 import BaseComponent from './BaseComponent.js';
 
 export class OrderPage extends BaseComponent {
+  #user = {
+    name: '',
+    phone: '',
+    email: '',
+  };
+
   constructor() {
     super();
 
@@ -49,6 +55,8 @@ export class OrderPage extends BaseComponent {
         </li>
       `;
     }
+
+    this.setFormBindings(this.root.querySelector('form'));
   }
 
   connectedCallback() {
@@ -57,6 +65,35 @@ export class OrderPage extends BaseComponent {
     });
 
     this.render();
+  }
+
+  setFormBindings(form) {
+    // @TODO: need refactoring and send data to the server
+    // clean UI and show a message to the user
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      alert(`Thanks for your order ${this.#user.name}!`);
+      this.#user.name = '';
+      this.#user.phone = '';
+      this.#user.email = '';
+
+      app.store.cart = [];
+    });
+
+    // Set double data binding
+    this.#user = new Proxy(this.#user, {
+      set: (target, property, value) => {
+        target[property] = value;
+        form.elements[property].value = value;
+        return true;
+      }
+    });
+
+    Array.from(form.elements).forEach((element) => {
+      element.addEventListener('change', () => {
+        this.#user[element.name] = element.value;
+      });
+    });
   }
 }
 
