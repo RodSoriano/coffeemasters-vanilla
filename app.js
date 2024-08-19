@@ -3,6 +3,7 @@ import Router from './services/Router.js';
 import { loadData } from './services/Menu.js';
 
 // import web components
+import ProductItem from './components/ProductItem.js';
 import { DetailsPage } from './components/DetailsPage.js';
 import { OrderPage } from './components/OrderPage.js';
 import { MenuPage } from './components/MenuPage.js';

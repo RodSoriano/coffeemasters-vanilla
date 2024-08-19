@@ -36,7 +36,7 @@ const navigateTo = (path, addToHistory = true) => {
         pageElement = document.createElement('details-page');
 
         const paramId = path.substring(path.lastIndexOf('/') + 1);
-        pageElement.dataset.id = paramId;
+        pageElement.dataset.productId = paramId;
       }
   }
 
