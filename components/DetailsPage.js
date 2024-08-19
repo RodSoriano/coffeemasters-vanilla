@@ -1,5 +1,6 @@
-import BaseComponent from './BaseComponent.js';
 import { getProductById } from '../services/Menu.js';
+import { addToCart } from '../services/Order.js';
+import BaseComponent from './BaseComponent.js';
 
 export class DetailsPage extends BaseComponent {
   constructor() {
@@ -26,7 +27,7 @@ export class DetailsPage extends BaseComponent {
       this.root.querySelector('.price').textContent = `$${this.product.price}`;
 
       this.root.querySelector('button').addEventListener('click', () => {
-        // @TODO: addToCart(this.product.id);
+        addToCart(this.product.id);
         app.router.go('/order');
       });
     } else {

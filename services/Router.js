@@ -8,7 +8,7 @@ const initialize = () => {
       Router.go(path);
     });
 
-    // Event handler for URL changes like the going back button
+    // Listen for history changes
     window.addEventListener('popstate', event => {
       Router.go(event.state.path, false);
     });

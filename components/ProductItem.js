@@ -1,3 +1,4 @@
+import { addToCart } from '../services/Order.js';
 import BaseComponent from './BaseComponent.js';
 
 export default class ProductItem extends BaseComponent {
@@ -21,10 +22,8 @@ export default class ProductItem extends BaseComponent {
     this.querySelector('img').alt = product.name;
 
     this.querySelector('a').addEventListener('click', event => {
-      console.log(event.target.tagName);
-
       if (event.target.tagName.toLowerCase() === 'button') {
-        // next ....
+        addToCart(product.id);
       } else {
         app.router.go(`/product/${product.id}`);
       }

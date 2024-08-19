@@ -8,15 +8,18 @@ const proxyStore = new Proxy(Store, {
     target[property] = value;
 
     if (property === 'menu') {
-      window.dispatchEvent(new Event('menu-updated', { detail: value }));
+      window.dispatchEvent(new Event('menu-updated'));
     }
 
     if (property === 'cart') {
-      window.dispatchEvent(new Event('cart-updated', { detail: value }));
+      window.dispatchEvent(new Event('cart-updated'));
     }
 
     return true;
   },
+  get: (target, property) => {
+    return target[property];
+  }
 });
 
 export default proxyStore;
