@@ -10,7 +10,9 @@ const initialize = () => {
 
     // Listen for history changes
     window.addEventListener('popstate', event => {
-      Router.go(event.state.path, false);
+      if (event.state !== null) {
+        Router.go(event.state.path, false);
+      }
     });
 
     // Check the initial URL

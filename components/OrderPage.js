@@ -70,6 +70,11 @@ export class OrderPage extends BaseComponent {
   setFormBindings(form) {
     // @TODO: need refactoring and send data to the server
     // clean UI and show a message to the user
+
+    if (!form) {
+      return null;
+    }
+
     form.addEventListener('submit', event => {
       event.preventDefault();
       alert(`Thanks for your order ${this.#user.name}!`);
